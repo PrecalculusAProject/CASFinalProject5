@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to My Portfolio</h1>
+            <p>This website showcases my journey in learning web development.</p>
+        </section>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <p>Coming soon...</p>
+        </section>
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <textarea placeholder="Your message"></textarea><br><br>
+                <button>Submit</button>
+            </form>
+        </section>
+    </main>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #ffffff;
+    }
+    nav {
+        background-color: #1e1e1e;
+        padding: 10px;
+        text-align: center;
+    }
+    nav a {
+        color: #ffffff;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+    section {
+        padding: 20px;
+    }
+    button {
+        background-color: #007BFF;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div id="projectGallery"></div>
+</section>
+<script>
+    const projects = [
+        { title: "Basic HTML Page", description: "My first webpage with HTML.", image: "html.png" },
+        { title: "One-Page Website", description: "A website using HTML and CSS.", image: "website.png" },
+        { title: "Contact Form", description: "A form with JavaScript validation.", image: "form.png" }
+    ];
+
+    const projectGallery = document.getElementById("projectGallery");
+
+    projects.forEach(project => {
+        const projectCard = document.createElement("div");
+        projectCard.innerHTML = `
+            <h3>${project.title}</h3>
+            <p>${projecjht.description}</p>
+            <img src="${project.image}" alt="${project.title}">
+        `;
+        projectGallery.appendChild(projectCard);
+    });
+</script>
+
+  <button onclick="toggleTheme()">Toggle Theme</button>
+<script>
+    const body = document.body;
+    const theme = localStorage.getItem("theme");
+    if (theme) body.className = theme;
+
+    function toggleTheme() {
+        body.className = body.className === "dark-mode" ? "light-mode" : "dark-mode";
+        localStorage.setItem("theme", body.className);
+    }
+</script>
+<style>
+    .dark-mode {
+        background-color: #121212;
+        color: #ffffff;
+    }
+    .light-mode {
+        background-color: #ffffff;
+        color: #000000;
+    }
+</style>
+<script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        if (!name || !email) {
+            alert("All fields are required!");
+            return;
+        }
+        alert("Form submitted successfully!");
+    });
+</script>
+
+
+
+</body>
+</html>
